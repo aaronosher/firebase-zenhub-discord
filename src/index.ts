@@ -1,3 +1,4 @@
+import { https } from 'firebase-functions';
 import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import { issueTransfer } from './webhookHandlers';
@@ -33,4 +34,4 @@ app.post('/', async (req: Request, res: Response) => {
   }
 });
 
-export default app;
+export const hook = https.onRequest(app);
